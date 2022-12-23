@@ -1,4 +1,5 @@
 @use "sass:math";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 $size: 3000px;
 
@@ -25,42 +26,41 @@ body{
   top: 50%;
   margin-left: math.div(-$size, 2);
   margin-top: math.div(-$size, 2);
-}
 
-.radar:hover {
-  background: none;
-}
+  &:hover {
+    background: none;
+  }
 
-.radar .pointer {
-  position: absolute;
-  z-index: 1024;
-  left: 10.5820106%;
-  right: 10.5820106%;
-  top: 10.5820106%;
-  bottom: 50%;
-  will-change: transform;
-  transform-origin: 50% 100%;
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  background-image: linear-gradient(120deg, 
-    rgba(0, 0, 0, 0.8) 0%, 
-    rgba(0, 0, 0, 0.02) 65%,
-    rgba(0, 0, 0, 0) 100%
-    );
-  clip-path: polygon(100% 0, 
-    100% 65%, //控制扇形角度 100% => 135deg
-    50% 100%, 0 100%, 0 0);
+  .pointer {
+    position: absolute;
+    z-index: 1;
+    left: 10.5820106%;
+    right: 10.5820106%;
+    top: 10.5820106%;
+    bottom: 50%;
+    will-change: transform;
+    transform-origin: 50% 100%;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    background-image: linear-gradient(120deg, 
+      rgba(0, 0, 0) 0%, 
+      rgba(0, 0, 0, 0.02) 65%,
+      rgba(0, 0, 0, 0) 100%
+      );
+    // clip-path: polygon(100% 0, 
+    //   100% 65%, //控制扇形角度 100% => 135deg
+    //   50% 100%, 0 100%, 0 0);
+    
+    // animation: rotate360 5s infinite linear;
   
-  // animation: rotate360 5s infinite linear;
-
-}
-
-.radar .pointer:after {
-  content: "";
-  position: absolute;
-  width: 50%;
-  bottom: -1px;
-  // border-top: 2px solid rgba(0, 0, 0, 0.3);
-  border-radius: 9px;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      bottom: -1px;
+      border-top: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 9px;
+    }
+  }
 }
 
 @keyframes rotate360 {
@@ -69,5 +69,61 @@ body{
   }
   to {
     transform: rotate(-360deg);
+  }
+}
+
+.text-radar {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  @media (max-width: 600px) {
+    font-size:1rem;
+  }
+
+  .text-top-left {
+    position: absolute;
+    z-index: 2;
+    top: 10%;
+    left: 10%;
+    span {
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: 400;
+    }
+  }
+
+  .text-bottom-left {
+    position: absolute;
+    z-index: 2;
+    bottom: 10%;
+    left: 10%;
+    span {
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: 400;
+    }
+  }
+
+  .text-bottom-right {
+    position: absolute;
+    z-index: 2;
+    bottom: 10%;
+    right: 10%;
+    span {
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: 400;
+    }
+  }
+  .text-top-right {
+    position: absolute;
+    z-index: 2;
+    top: 10%;
+    right: 10%;
+    span {
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: 400;
+    }
   }
 }
