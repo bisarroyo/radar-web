@@ -1,8 +1,6 @@
 @use "sass:math";
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
 $size: 3000px;
-
 body{
   margin: 0;
   overflow: hidden;
@@ -10,68 +8,25 @@ body{
   height: 100vh;
 }
 
-.radar-container {
- width: 100vw;
- height: 100vh;
- overflow: hidden;
-}
-
-
 .radar {
-  width: $size;
-  height: $size;
-  background-size: $size $size;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: math.div(-$size, 2);
-  margin-top: math.div(-$size, 2);
-
-  &:hover {
-    background: none;
-  }
-
-  .pointer {
-    position: absolute;
-    z-index: 1;
-    left: 10.5820106%;
-    right: 10.5820106%;
-    top: 10.5820106%;
-    bottom: 50%;
-    will-change: transform;
-    transform-origin: 50% 100%;
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-    background-image: linear-gradient(120deg, 
-      rgba(0, 0, 0) 0%, 
-      rgba(0, 0, 0, 0.02) 65%,
-      rgba(0, 0, 0, 0) 100%
-      );
-    // clip-path: polygon(100% 0, 
-    //   100% 65%, //控制扇形角度 100% => 135deg
-    //   50% 100%, 0 100%, 0 0);
-    
-    // animation: rotate360 5s infinite linear;
-  
-    &:after {
-      content: "";
-      position: absolute;
-      width: 50%;
-      bottom: -1px;
-      border-top: 2px solid rgba(0, 0, 0, 0.1);
-      border-radius: 9px;
+  background-position: 0px 0px;
+  background-image: conic-gradient(from 0deg at 50% 50%, #000000FF 0%, #073AFF00 100%);
+  top: 0;
+  left: 0;
+  animation: linear rotate360 7s infinite;
+}
+@keyframes rotate360 {
+  @for $i from 1 through 360 {
+    $move: $i / 3.6;
+    #{$move}% {
+      background-image: conic-gradient(from -#{$i}deg at 50% 50%, #000000FF 0%, #073AFF00 100%);
     }
   }
 }
-
-@keyframes rotate360 {
-  0% {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
 .text-radar {
   position: relative;
   height: 100vh;
@@ -80,10 +35,10 @@ body{
   font-family: 'Orbitron', sans-serif;
   font-size: 2rem;
   font-weight: 700;
+  z-index: 2;
   @media (max-width: 600px) {
     font-size:1rem;
   }
-
   .text-top-left {
     position: absolute;
     z-index: 2;
@@ -94,7 +49,6 @@ body{
       font-weight: 400;
     }
   }
-
   .text-bottom-left {
     position: absolute;
     z-index: 2;
@@ -105,12 +59,12 @@ body{
       font-weight: 400;
     }
   }
-
   .text-bottom-right {
     position: absolute;
     z-index: 2;
     bottom: 20%;
     right: 10%;
+    text-align: end;
     span {
       color: rgba(0, 0, 0, 0.5);
       font-weight: 400;
@@ -121,6 +75,7 @@ body{
     z-index: 2;
     top: 20%;
     right: 10%;
+    text-align: end;
     span {
       color: rgba(0, 0, 0, 0.5);
       font-weight: 400;

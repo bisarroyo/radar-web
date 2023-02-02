@@ -3,3 +3,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+.draw-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.moon {
+ width: 80px;
+ height: 80px;
+ background-color: black;
+ border-radius: 50%;
+ position: absolute;
+}
+
+.sun {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  border-radius: 50%;
+  position: absolute;
+}
